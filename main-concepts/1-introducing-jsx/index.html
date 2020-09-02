@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+
+    <title>Hello React!</title>
+     <!-- Adding React to HTML through CDN -->
+    <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.13.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const person = {
+            first: "Gaurav",
+            last: "Lohia"
+        };
+
+        function formatUsername(user) {
+            return user.first + " " + user.last;
+        }
+        const element = <h1>Hello, {formatUsername(person)}</h1>
+        // You can put any valid JavaScript expression inside the curly braces in JSX.
+        // For example, 2 + 2, user.firstName, or formatName(user) are all valid JavaScript expressions.
+
+        ReactDOM.render(
+            element,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+
+</html>
