@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Components and Props</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <div id="child"></div>
+
+    <script type="text/babel">
+        // Function component
+        function Welcome(props) {
+            return <h1>Hello, {props.name}</h1>;
+        }
+
+        // Class component - semantically same as function component
+        class App extends React.Component {
+            render() {
+                // props used through this
+                if (this.props) {
+                    return (
+                        <div>
+                            <Welcome name="Gaurav Lohia" />
+                            <h2>{this.props.message}</h2>
+                            <h2>Time is: {new Date().toLocaleTimeString()}</h2>
+                        </div>
+                    );
+                } else {
+                    return (
+                        <div>
+                            <Welcome name="Gaurav Lohia" />
+                            <h2>Time is: {new Date().toLocaleTimeString()}</h2>
+                        </div>
+                    );
+                }
+            }
+        }
+
+        function tick() {
+            ReactDOM.render(
+                <App message="This is a message from the ReactDOM"/>,
+                document.getElementById("root")
+            );
+        }
+
+        setInterval(tick, 1000);
+        ReactDOM.render(
+            <h1>Hello again!!!</h1>,
+            document.getElementById('child')
+        );
+    </script>
+</body>
+
+</html>

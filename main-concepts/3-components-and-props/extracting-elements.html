@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Components and Props</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Avatar(props) {
+            return (
+                <img className="Avatar"
+                    src={props.user.avatarUrl}
+                    alt={props.user.name}
+                />
+            );
+        }
+
+        function UserInfo(props) {
+            return (
+                <div className="UserInfo">
+                    <Avatar user={props.user} />
+                    <div className="UserInfo-name">
+                        {props.user.name}
+                    </div>
+                </div>
+            );
+        }
+
+        function Comment(props) {
+            return (
+                <div className="Comment">
+                    <UserInfo user={props.author}/>
+                    <div className="Comment-text">
+                        {props.text}
+                    </div>
+                    <div className="Comment-date">
+                        {props.date}
+                    </div>
+                </div>
+            );
+        }
+
+        var user = {
+            avatarUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTLhfuiGE0_vCW96Bfv0Da9bdwbC5aT9InhPg&usqp=CAU",
+            name: "Bianca Otomendy"
+        };
+
+        ReactDOM.render(
+            <Comment author={user} text="React is awesome for composing and reusing elements." date={new Date().toLocaleDateString()}/>,
+            document.getElementById("root")
+        );
+    </script>
+</body>
+
+</html>
